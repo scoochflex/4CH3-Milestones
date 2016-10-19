@@ -179,16 +179,16 @@ user (what functions it provides)~\cite{Norman:2013}, how it signifies different
 the user what they are able to do), the constraints present in the application
 (things that the GUI prevents the user from doing), the feedback shown to the 
 user when actions are performed and the overall discoverability of the GUI.
-The conceptual model is also something that will be discussed for each GUI; how
-it shows the underlaying conceptual model defined by Git will be evaluated.
+The conceptual model is also something that will be discussed for each GUI: how
+it shows the underlying conceptual model defined by Git and how it will be evaluated.
 
 The four Git GUIs that will be reviewed in this survey are by different companies and have
 free versions available for public use. 
 
-One client is GitHub, it is provided by Git Hub - a site that hosts git projects. It is a simplified GUI aimed at making git accessible to everyone
+One client is GitHub, it is provided by GitHub - a site that hosts git projects. It is a simplified GUI aimed at making git accessible to everyone
 with a  reduced learning curve.
 
- GitKraken a client made by Axosoft, allows users to link to multiple remote repositories hosted on many types of servers (GitHub, BitBucket, etc...).
+GitKraken, a client made by Axosoft, allows users to link to multiple remote repositories hosted on many types of servers (GitHub, BitBucket, etc...).
 It provides access to many of Git's functions, making it useful for advanced users.
 
 The third piece of software to be reviewed is SmartGit. SmartGit allows for almost ALL of gits
@@ -212,21 +212,23 @@ independently of other branches) is critical for testing and developing features
 There are two core tasks that almost all Git users will perform. The first task is making changes to a local copy of the code,
 committing those changes, and finally pushing those changes to the master branch. This task should 
 provide appropriate feedback to the user in the case that they are unable to push for whatever reason.
-The second task is a common and can be a more involved task, merging a branch into the master branch. 
+The second task is also common and can be a more involved task: merging a branch into the master branch. 
 When the user creates a branch from the master to add a feature, or fix a bug (programming error), they
 will eventually need to merge that branch back into the master for it to be integrated into the main application. 
 This process can involve many merge conflicts (when the differences in source code between two revisions of
 a file cannot be automatically resolved) that can make this challenging.
 
- These high level goals can be broken down into Git commands, the GUIs use Git commands to achieve the user's goals. Depending on the GUI,
-it is explicit about the git commands that will be used and will allow the user to customize them. 
+These high level goals can be broken down into Git commands; these Git commands
+are the underlying task that the GUIs execute to achieve the user's goals. 
+Depending on the GUI, it is explicit about the git commands that will be used 
+and will allow the user to customize them. 
 
 \section{GitHub Desktop Review}
-This section reviews GitHub desktop, the default GUI for managing git repositories.
-This application is produced by GitHub and can be downloaded and opened directly from 
-their website. The affordance that most git users appreciate about GitHub desktop over 
+This section reviews GitHub desktop.
+This application is produced by GitHub and can be downloaded directly from 
+their website. The affordance that most git users appreciate about GitHub Desktop over 
 other applications is the easy cloning ability. This interface does not allow for users 
-to edit their code directly within the app, nor can you view the most recent version of 
+to edit their code directly within the application, nor can you view the most recent version of 
 the files. Instead you can see the initial files, and you can see the specific changes
 that you made to the files. In order to see the current file with all changes applied
 and to make changes to the file you must open those files in another program on your 
@@ -391,6 +393,55 @@ This is a core task in the Git development process. This section will briefly el
   \caption{This image is a screen shot of the GitKraken showing how to resolve conflicts}~\label{fig:GitKrakenFigure6}
 \end{figure*}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%{ Begin SourceTree
+\section{SourceTree Review}
+SourceTree by Atlassian is a Git client marketed as having a simple, but 
+feature-rich GUI. SourceTree has support for the regular git features while 
+including a couple new ones such as: Git Large File Support (Git-LFS) and 
+Git-flow Workflow support which can manage feature branches automatically. 
+
+\subsection{Stage, Commit and Push Changes to Remote}
+An important procedure in a git client is staging, commiting, and pushing 
+changes to a remote repo. 
+In the staging area to choose files, there is a poor constraint on the 
+"Stage Selected" button; it is greyed out since it wants the user to stage 
+the "hunks" on a new window to the right instead. And the discoverability is poor 
+since the interface doesn't explain to the user what must be done to move on.
+The user then presses the commit button which returns to the default screen 
+with poor feedback on the new state of the repository. After a successful action,
+there is no status window or confirmation of success; the user would have to manually
+inspect the main Git log (in the middle of the screen) to see if their new commit message 
+is present. From here, pushing the repo to remote involves pressing the Push button and choosing
+the remote repository from a dropdown; however, if the user hasn't set up remote repositories beforehand,
+there is no way to add them from this window.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/SourceTree/constraints_stage_selected}
+  \caption{Stage file button is greyed out without explaining why.}~\label{fig:SourceTreeConstraint}
+\end{figure*}
+
+
+\subsection{Merge a Branch into Master}
+SourceTree aims to simplify branch merging; however, the feature seems too 
+simplistic. When merging, there is no affordance of writing a custom commit 
+message. All of the options are suggestions to the program, and it decides 
+which strategy to use automatically. There is no signifier for what merging 
+strategy it will use when you press the submit button. Even after you press 
+the button, there is still no feedback of what command the application 
+attempted unless it fails. When an error is given, the error is poorly 
+explained to a regular user as the output is the console output of the 
+internal git command.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/SourceTree/failed_task_shows_git_command}
+  \caption{Failed action shows console output to the user.}~\label{fig:SourceTreeFailOutput}
+\end{figure*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%} End SourceTree
+
 \section{SmartGit}
 SmartGit is another tool that prides itself in integrating almost all of Git's core features in a manageable fashion.
 It makes the claim that you will fine simpler tools for a trivial pull, but none that afford the mastering of all of Git's major
@@ -407,6 +458,9 @@ SmartGit has said that it is not the simplest tool to do trivial commits and oth
 Keeping that in mind the following HTA breakdown explains briefly how to perform each step.
 
 1.1. 
+
+
+
 
 
 \section{Conclusion}
