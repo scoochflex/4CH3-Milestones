@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.5)  18 OCT 2016 15:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.3.5)  18 OCT 2016 20:51
 entering extended mode
 **C:/Users/victor/Documents/Year*5/Term*1/4hc3/4CH3-Milestones/Milestone2/LaTeX
 /Milestone2.tex
@@ -1102,61 +1102,62 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 Non-PDF special ignored!
 
 ]
-<figures/sigchi-logo.png, id=125, 241.8636pt x 55.407pt>
+<figures/sigchi-logo.png, id=133, 241.8636pt x 55.407pt>
 File: figures/sigchi-logo.png Graphic file (type png)
 
 <use figures/sigchi-logo.png>
-Package pdftex.def Info: figures/sigchi-logo.png used on input line 255.
+Package pdftex.def Info: figures/sigchi-logo.png used on input line 295.
 (pdftex.def)             Requested size: 219.58264pt x 50.3029pt.
-
-<figures/map.png, id=136, 1023.825pt x 484.81125pt>
+ [2 <C:/Users/victor/Documents/Year 5/Term 1/4hc3/4CH3-Milestones/Milestone2/La
+TeX/figures/sigchi-logo.png>]
+<figures/map.png, id=172, 1023.825pt x 484.81125pt>
 File: figures/map.png Graphic file (type png)
  <use figures/map.png>
-Package pdftex.def Info: figures/map.png used on input line 354.
+Package pdftex.def Info: figures/map.png used on input line 394.
 (pdftex.def)             Requested size: 426.96915pt x 202.18419pt.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 359.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 399.
 LaTeX Font Info:    Font shape `U/ccicons/m/n' will be
-(Font)              scaled to size 8.0pt on input line 359.
-
-[2 <C:/Users/victor/Documents/Year 5/Term 1/4hc3/4CH3-Milestones/Milestone2/LaT
-eX/figures/sigchi-logo.png>]
-LaTeX Font Info:    Try loading font information for T1+txr on input line 420.
+(Font)              scaled to size 8.0pt on input line 399.
+LaTeX Font Info:    Try loading font information for T1+txr on input line 460.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\txfonts\t1txr.fd"
 File: t1txr.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for TS1+txr on input line 420.
+LaTeX Font Info:    Try loading font information for TS1+txr on input line 460.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\txfonts\ts1txr.fd"
 File: ts1txr.fd 2000/12/15 v3.1
 )
-Underfull \hbox (badness 1057) in paragraph at lines 452--456
+Underfull \hbox (badness 1057) in paragraph at lines 492--496
 \T1/ptm/m/n/10 (+20) For more in-for-ma-tion and links to in-struc-tions and re
 -
  []
 
-[3 <C:/Users/victor/Documents/Year 5/Term 1/4hc3/4CH3-Milestones/Milestone2/LaT
-eX/figures/map.png>]
+[3]
 ("C:\Users\victor\Documents\Year 5\Term 1\4hc3\4CH3-Milestones\Milestone2\LaTeX
-\Milestone2.bbl") [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 574.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 574.
+\Milestone2.bbl"
+Underfull \vbox (badness 1097) has occurred while \output is active []
+
+ [4 <C:/Users/victor/Documents/Year 5/Term 1/4hc3/4CH3-Milestones/Milestone2/La
+TeX/figures/map.png>]) [5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 614.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 614.
 
 ("C:\Users\victor\Documents\Year 5\Term 1\4hc3\4CH3-Milestones\Milestone2\LaTeX
 \Milestone2.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 574.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 574.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 614.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 614.
 Package rerunfilecheck Info: File `Milestone2.out' has not changed.
-(rerunfilecheck)             Checksum: 2AC2B3D8F0A133EC29AC34649FC94941;1384.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 574.
+(rerunfilecheck)             Checksum: 99E12EF64F6E76EDFB16A3B75B871DE4;1594.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 614.
  ) 
 Here is how much of TeX's memory you used:
- 19672 strings out of 493921
- 358028 string characters out of 3147280
- 451463 words of memory out of 3000000
- 22310 multiletter control sequences out of 15000+200000
+ 19682 strings out of 493921
+ 358139 string characters out of 3147280
+ 450466 words of memory out of 3000000
+ 22313 multiletter control sequences out of 15000+200000
  84760 words of font info for 215 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  62i,10n,56p,629b,573s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1170,9 +1171,9 @@ ram Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on Milestone2.pdf (4 pages, 500808 bytes).
+Output written on Milestone2.pdf (5 pages, 505897 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 74 named destinations out of 1000 (max. 500000)
- 31439 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 297 PDF objects out of 1000 (max. 8388607)
+ 81 named destinations out of 1000 (max. 500000)
+ 31463 words of extra memory for PDF output out of 35830 (max. 10000000)
 
