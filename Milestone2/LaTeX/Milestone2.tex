@@ -221,10 +221,17 @@ frustrating depending on how long the repository takes to load.
 
 The user must then enter the changes view, signified by the dot appearing on the changes 
 button. In this view all changes on the local machine are automatically selected, but none of the 
-changes are automatically visible. This can lea to a misconception when users enter their summary
+changes are automatically visible. This can lead to a misconception when users enter their summary
 of the change, believing they are writing the description for one change but actually committing 
-all changes witht that summary. This is a problem with discoverability in the system, a user might 
-make this mistake many times before realizing their actions consequences.
+all changes with that summary. This is a problem with discoverability in the system, a user might 
+make this mistake many times before realizing their actions consequences. After a user commits their 
+changes, they receive a small piece of feedback at the bottom. Unfortunately this is the same colour 
+as the rest of the GUI and is not very noticeable.
+
+There is another problem in discoverability for this process. This comes from the actual push action 
+and closes off the action described in the HTA. Namely, GitHub users the word push to describe 
+pushing a change from your local repository onto the remote repository. However, in GitHub desktop,
+this action is instigated by pressing the sync button in the right hand corner. A long term git user
 
 \section{Page Size and Columns}
 On each page your material should fit within a rectangle of 7 $\times$
