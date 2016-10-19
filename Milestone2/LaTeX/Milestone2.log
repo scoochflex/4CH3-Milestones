@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.3)  19 OCT 2016 13:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.3)  19 OCT 2016 14:50
 entering extended mode
 **"F:/School/Year 5/Term1/4HC3/4CH3-Milestones/Milestone2/LaTeX/Milestone2.tex"
 
@@ -1148,45 +1148,160 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Non-PDF special ignored!
 
 ]
-<figures/GitKraken/ScreenshotHighlighted.png, id=61, 1445.4pt x 813.0375pt>
+<figures/GitHub/Git-Hub-Repositories.PNG, id=74, 156.585pt x 283.81032pt>
+File: figures/GitHub/Git-Hub-Repositories.PNG Graphic file (type png)
+
+<use figures/GitHub/Git-Hub-Repositories.PNG>
+Package pdftex.def Info: figures/GitHub/Git-Hub-Repositories.PNG used on input 
+line 248.
+(pdftex.def)             Requested size: 426.96915pt x 773.98921pt.
+
+
+LaTeX Warning: Float too large for page by 143.57584pt on input line 250.
+
+<figures/GitHub/Git-Hub-Changes.PNG, id=78, 153.57375pt x 40.65187pt>
+File: figures/GitHub/Git-Hub-Changes.PNG Graphic file (type png)
+
+<use figures/GitHub/Git-Hub-Changes.PNG>
+Package pdftex.def Info: figures/GitHub/Git-Hub-Changes.PNG used on input line 
+263.
+(pdftex.def)             Requested size: 426.96915pt x 113.0286pt.
+
+<figures/GitHub/Git-Hub-Changes-View.PNG, id=79, 774.64406pt x 426.09187pt>
+File: figures/GitHub/Git-Hub-Changes-View.PNG Graphic file (type png)
+
+<use figures/GitHub/Git-Hub-Changes-View.PNG>
+Package pdftex.def Info: figures/GitHub/Git-Hub-Changes-View.PNG used on input 
+line 269.
+(pdftex.def)             Requested size: 426.96915pt x 234.85837pt.
+
+<figures/GitHub/Git-Hub-Changes-Sync.PNG, id=81, 283.81032pt x 70.01157pt>
+File: figures/GitHub/Git-Hub-Changes-Sync.PNG Graphic file (type png)
+
+<use figures/GitHub/Git-Hub-Changes-Sync.PNG>
+Package pdftex.def Info: figures/GitHub/Git-Hub-Changes-Sync.PNG used on input 
+line 282.
+(pdftex.def)             Requested size: 426.96915pt x 105.33649pt.
+
+<figures/GitHub/Git-Hub-Compare-Button.PNG, id=84, 289.83281pt x 106.89937pt>
+File: figures/GitHub/Git-Hub-Compare-Button.PNG Graphic file (type png)
+
+<use figures/GitHub/Git-Hub-Compare-Button.PNG>
+Package pdftex.def Info: figures/GitHub/Git-Hub-Compare-Button.PNG used on inpu
+t line 298.
+(pdftex.def)             Requested size: 426.96915pt x 157.48923pt.
+
+<figures/GitHub/Git-Hub-Changes-Update.PNG, id=85, 280.79906pt x 108.405pt>
+File: figures/GitHub/Git-Hub-Changes-Update.PNG Graphic file (type png)
+
+<use figures/GitHub/Git-Hub-Changes-Update.PNG>
+Package pdftex.def Info: figures/GitHub/Git-Hub-Changes-Update.PNG used on inpu
+t line 304.
+(pdftex.def)             Requested size: 426.96915pt x 164.84511pt.
+
+<figures/GitKraken/Open_a_repo.png, id=87, 941.76843pt x 602.25pt>
+File: figures/GitKraken/Open_a_repo.png Graphic file (type png)
+
+<use figures/GitKraken/Open_a_repo.png>
+Package pdftex.def Info: figures/GitKraken/Open_a_repo.png used on input line 3
+24.
+(pdftex.def)             Requested size: 426.96915pt x 273.0409pt.
+ [2] [3 <./figures/GitHub/Git-Hub-Repositories.PNG>] [4 <./figures/GitHub/Git-H
+ub-Changes.PNG> <./figures/GitHub/Git-Hub-Changes-View.PNG> <./figures/GitHub/G
+it-Hub-Changes-Sync.PNG>] [5 <./figures/GitHub/Git-Hub-Compare-Button.PNG> <./f
+igures/GitHub/Git-Hub-Changes-Update.PNG>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+<figures/GitKraken/ScreenshotHighlighted.png, id=127, 1445.4pt x 813.0375pt>
 File: figures/GitKraken/ScreenshotHighlighted.png Graphic file (type png)
 
 <use figures/GitKraken/ScreenshotHighlighted.png>
 Package pdftex.def Info: figures/GitKraken/ScreenshotHighlighted.png used on in
-put line 287.
+put line 352.
 (pdftex.def)             Requested size: 426.96915pt x 240.16653pt.
- [2] (Milestone2.bbl)
 
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
+<figures/GitKraken/Screenshot2Highlighted.png, id=128, 1445.4pt x 813.0375pt>
+File: figures/GitKraken/Screenshot2Highlighted.png Graphic file (type png)
 
-[3 <./figures/GitKraken/ScreenshotHighlighted.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 338.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 338.
+<use figures/GitKraken/Screenshot2Highlighted.png>
+Package pdftex.def Info: figures/GitKraken/Screenshot2Highlighted.png used on i
+nput line 358.
+(pdftex.def)             Requested size: 426.96915pt x 240.16653pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./figures/GitKraken/Open_a_repo.png>] [7 <./figures/GitKraken/ScreenshotHi
+ghlighted.png> <./figures/GitKraken/Screenshot2Highlighted.png>]
+<figures/GitKraken/MergeDropdown.png, id=141, 1445.4pt x 813.0375pt>
+File: figures/GitKraken/MergeDropdown.png Graphic file (type png)
+
+<use figures/GitKraken/MergeDropdown.png>
+Package pdftex.def Info: figures/GitKraken/MergeDropdown.png used on input line
+ 378.
+(pdftex.def)             Requested size: 426.96915pt x 240.16653pt.
+
+<figures/GitKraken/MergeFailedNotification.png, id=142, 1445.4pt x 813.0375pt>
+File: figures/GitKraken/MergeFailedNotification.png Graphic file (type png)
+
+<use figures/GitKraken/MergeFailedNotification.png>
+Package pdftex.def Info: figures/GitKraken/MergeFailedNotification.png used on 
+input line 384.
+(pdftex.def)             Requested size: 426.96915pt x 240.16653pt.
+
+<figures/GitKraken/MergeConflictResolution.png, id=143, 1445.4pt x 813.0375pt>
+File: figures/GitKraken/MergeConflictResolution.png Graphic file (type png)
+
+<use figures/GitKraken/MergeConflictResolution.png>
+Package pdftex.def Info: figures/GitKraken/MergeConflictResolution.png used on 
+input line 390.
+(pdftex.def)             Requested size: 426.96915pt x 240.16653pt.
+
+<figures/GitKraken/GitKrakenHTA1.png, id=144, 765.86125pt x 163.61125pt>
+File: figures/GitKraken/GitKrakenHTA1.png Graphic file (type png)
+
+<use figures/GitKraken/GitKrakenHTA1.png>
+Package pdftex.def Info: figures/GitKraken/GitKrakenHTA1.png used on input line
+ 425.
+(pdftex.def)             Requested size: 426.96915pt x 91.21474pt.
+
+<figures/GitKraken/GitKrakenHTA2.png, id=145, 765.86125pt x 163.61125pt>
+File: figures/GitKraken/GitKrakenHTA2.png Graphic file (type png)
+
+<use figures/GitKraken/GitKrakenHTA2.png>
+Package pdftex.def Info: figures/GitKraken/GitKrakenHTA2.png used on input line
+ 431.
+(pdftex.def)             Requested size: 426.96915pt x 91.21474pt.
+ (Milestone2.bbl) [8] [9 <./figures/GitKraken/MergeDropdown.png> <./figures/Git
+Kraken/MergeFailedNotification.png>]
+[10 <./figures/GitKraken/MergeConflictResolution.png> <./figures/GitKraken/GitK
+rakenHTA1.png> <./figures/GitKraken/GitKrakenHTA2.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 444.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 444.
  (Milestone2.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 338.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 338.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 444.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 444.
 Package rerunfilecheck Info: File `Milestone2.out' has not changed.
-(rerunfilecheck)             Checksum: D4EBB4DFDF61AB3DA12E0E0322DE8433;582.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 338.
+(rerunfilecheck)             Checksum: 469594F5C6321733F91BCE059B6EE1E9;796.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 444.
  ) 
 Here is how much of TeX's memory you used:
- 19493 strings out of 493634
- 359179 string characters out of 3143742
- 446041 words of memory out of 3000000
- 22295 multiletter control sequences out of 15000+200000
- 73085 words of font info for 197 fonts, out of 3000000 for 9000
+ 19605 strings out of 493634
+ 362287 string characters out of 3143742
+ 448317 words of memory out of 3000000
+ 22363 multiletter control sequences out of 15000+200000
+ 73215 words of font info for 199 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 62i,10n,56p,658b,573s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 62i,10n,56p,849b,573s stack positions out of 5000i,500n,10000p,200000b,50000s
 {F:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Users/Victor
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/txfonts/t1xbtt.pfb><F:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><F:/Program Files/Mi
 KTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><F:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/urw/times/utmr8a.pfb><F:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utm
 ri8a.pfb>
-Output written on Milestone2.pdf (3 pages, 308016 bytes).
+Output written on Milestone2.pdf (10 pages, 1097467 bytes).
 PDF statistics:
- 106 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
- 23130 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 201 PDF objects out of 1000 (max. 8388607)
+ 53 named destinations out of 1000 (max. 500000)
+ 23219 words of extra memory for PDF output out of 24883 (max. 10000000)
 
