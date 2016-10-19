@@ -236,37 +236,74 @@ as well as who made those changes.
 \subsection{Stage, Commit and Push Changes to Remote}
 Being able to take changes made on the users machine and apply them to the remote repository 
 is an essential element to managing a git repository. This is described for GitHub desktop in
-the HTA ***called this***. After a user has made a change to a file on their machine and has 
+the HTA GitHub-HTA2. After a user has made a change to a file on their machine and has 
 opened the GitHub desktop application, they must choose what repository they have made changes 
 to. The repositories are found on the left hand side of the page and although there is no title 
-signifying that these are the repositories, the filter repositories field is used as a signifier.
-The feedback the user receives after pressing the repository name is not immediate and could be
+signifying that these are the repositories, the filter repositories field is used as a signifier \ref{fig:GitHub1}. The feedback the user receives after pressing the repository name is not immediate and could be
 frustrating depending on how long the repository takes to load. 
 
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitHub/Git-Hub-Repositories.PNG}
+  \caption{This image displays the selectable repositoriesin Git Hub Desktop.}~\label{fig:GitHub1}
+\end{figure*}
+
 The user must then enter the changes view, signified by the dot appearing on the changes 
-button. In this view all changes on the local machine are automatically selected, but none of the 
-changes are automatically visible. This can lead to a misconception when users enter their summary
+button \ref{fig:GitHub2}. In this view all changes on the local machine are automatically selected, but none of the 
+changes are automatically visible \ref{fig:GitHub3}. This can lead to a misconception when users enter their summary
 of the change, believing they are writing the description for one change but actually committing 
 all changes with that summary. This is a problem with discoverability in the system, a user might 
 make this mistake many times before realizing their actions consequences. After a user commits their 
 changes, they receive a small piece of feedback at the bottom. Unfortunately this is the same colour 
 as the rest of the GUI and is not very noticeable.
 
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitHub/Git-Hub-Changes.PNG}
+  \caption{This image displays the changes button in Git Hub Desktop.}~\label{fig:GitHub2}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitHub/Git-Hub-Changes-View.PNG}
+  \caption{This image displays the changes view in Git Hub Desktop.}~\label{fig:GitHub3}
+\end{figure*}
+
+
 There is another problem in discoverability for this process. This comes from the actual push action 
 and closes off the action described in the HTA. Namely, GitHub users the word push to describe 
 pushing a change from your local repository onto the remote repository. However, in GitHub desktop,
-this action is instigated by pressing the sync button in the right hand corner. A long term git user
+this action is instigated by pressing the sync button in the right hand corner \ref{fig:GitHub4}. A long term git user
 could have trouble relearning the new terminology or locating the button in the first place. 
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitHub/Git-Hub-Changes-Sync.PNG}
+  \caption{This image displays the sync button in Git Hub Desktop.}~\label{fig:GitHub4}
+\end{figure*}
 
 \subsection{Merge a Branch into Master}
 Another important function to enable a user to manage their repository is being able to merge two 
 branches, specifically merging a branch into the master branch. This is described in the HTA 
-***name of HTA***. The whole process in GitHub Desktop has problems with discoverability. In order 
+GitHub-HTA2. The whole process in GitHub Desktop has problems with discoverability. In order 
 to merge a branch into master you must have selected the master branch, and then select the branch 
-you wish to merge into master. This is counter intuitive as the user is most likely in their branch 
+you wish to merge into master \ref{fig:GitHub5}. This is counter intuitive as the user is most likely in their branch 
 already and would have to switch to master in order to achieve this goal. The last action that the user
-must take is to press the update button. This lessens the discoverability of the GUI because once again
+must take is to press the update button \ref{fig:GitHub6}. This lessens the discoverability of the GUI because once again
 this is not the terminology that GitHub traditionally uses.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitHub/Git-Hub-Compare-Button.PNG}
+  \caption{This image displays the compare button in Git Hub Desktop.}~\label{fig:GitHub5}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitHub/Git-Hub-Changes-Update.PNG}
+  \caption{This image displays the update button in Git Hub Desktop.}~\label{fig:GitHub6}
+\end{figure*}
 
 \section{Git Kraken Review}
 GitKraken is a powerful Git GUI that was meant aimed at making basic Git tasks easier for developers.
