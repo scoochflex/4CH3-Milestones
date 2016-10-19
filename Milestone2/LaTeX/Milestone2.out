@@ -1,26 +1,9 @@
 \BOOKMARK [1][-]{section.5}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.7}{Common User Goals}{}% 2
+\BOOKMARK [1][-]{section.7}{Git User Goals and Git Terms Explained}{}% 2
 \BOOKMARK [1][-]{section.9}{GitHub Desktop Review}{}% 3
 \BOOKMARK [2][-]{subsection.11}{Stage, Commit and Push Changes to Remote}{section.9}% 4
-\BOOKMARK [1][-]{section.13}{Page Size and Columns}{}% 5
-\BOOKMARK [1][-]{section.15}{Typeset Text}{}% 6
-\BOOKMARK [2][-]{subsection.17}{Title and Authors}{section.15}% 7
-\BOOKMARK [2][-]{subsection.19}{Abstract and Keywords}{section.15}% 8
-\BOOKMARK [2][-]{subsection.21}{Normal or Body Text}{section.15}% 9
-\BOOKMARK [2][-]{subsection.23}{First Page Copyright Notice}{section.15}% 10
-\BOOKMARK [2][-]{subsection.25}{Subsequent Pages}{section.15}% 11
-\BOOKMARK [2][-]{subsection.28}{References and Citations}{section.15}% 12
-\BOOKMARK [1][-]{section.31}{Sections}{}% 13
-\BOOKMARK [2][-]{subsection.33}{Subsections}{section.31}% 14
-\BOOKMARK [3][-]{subsubsection.35}{Sub-subsections}{subsection.33}% 15
-\BOOKMARK [1][-]{section.37}{Figures/Captions}{}% 16
-\BOOKMARK [2][-]{subsection.40}{Inserting Images}{section.37}% 17
-\BOOKMARK [1][-]{section.42}{Quotations}{}% 18
-\BOOKMARK [1][-]{section.44}{Language, Style, and Content}{}% 19
-\BOOKMARK [1][-]{section.46}{Accessibility}{}% 20
-\BOOKMARK [1][-]{section.53}{Page Numbering, Headers and Footers}{}% 21
-\BOOKMARK [1][-]{section.55}{Producing and Testing PDF Files}{}% 22
-\BOOKMARK [1][-]{section.57}{Conclusion}{}% 23
-\BOOKMARK [1][-]{section.59}{Acknowledgments}{}% 24
-\BOOKMARK [1][-]{section.61}{References Format}{}% 25
-\BOOKMARK [1][-]{section.63}{References }{}% 26
+\BOOKMARK [2][-]{subsection.13}{Merge a Branch into Master}{section.9}% 5
+\BOOKMARK [1][-]{section.15}{Git Kraken Review}{}% 6
+\BOOKMARK [2][-]{subsection.18}{Stage, Commit and Push Changes to Remote}{section.15}% 7
+\BOOKMARK [1][-]{section.20}{Conclusion}{}% 8
+\BOOKMARK [1][-]{section.22}{References }{}% 9
