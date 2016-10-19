@@ -284,8 +284,8 @@ at what commit they branched off of the code.
 
 \begin{figure*}
   \centering
-  \includegraphics[width=1.75\columnwidth]{figures/GitKraken/ScreenshotHighlighted}
-  \caption{This image is a screen shot of the GitKraken tutorial that happens on the first startup}~\label{fig:figure2}
+  \includegraphics[width=1.75\columnwidth]{figures/GitKraken/Open_a_repo}
+  \caption{This image is a screen shot of the GitKraken tutorial that happens on the first startup, it shows how to open/change repos}~\label{fig:GitKrakenFigure1}
 \end{figure*}
 
 \subsection{Stage, Commit and Push Changes to Remote}
@@ -306,14 +306,56 @@ After you have done that, you can see all the files with changes made on the rig
 GitKraken affords the viewing of changes by clicking on the files, the changes are shown in the middle of the screen and the additions and subtractions are signified by being highlighted green or red (this uses a cultural convention relating to traffic lights ~\cite{Norman:2013}). 
 
 1.4 To stage all changes in a file you can click on the green plus next to the file name in the unstaged files preview window. When reviewing the changes in the file you have the option of staging or unstaging hunks. A hunk is a logical grouping of changes based on proximity within a file. GitKraken affords limited editing before staging a file by allowing you to add or remove hunks. It does not however allow you to edit the file otherwise, line by line changes cannot be discarded or added.
-The green button at the bottom right shows you what you need to do next to push. When you are reviewing changes, and staging files, it displays the text "Stage files/changes to commit". It does not afford clicking and signifies that you cannot click it by graying out the button and changing your mouse cursor. This decreases the discoverability by providing little to no obvious feedback to the use; instead of graying out the button, it should not allow the user to perform the operation when clicked and let them know what still needs to be done by showing an error message.
+The green button at the bottom right shows you what you need to do next to push. When you are reviewing changes, and staging files, it displays the text "Stage files/changes to commit". It does not afford clicking and signifies that you cannot click it by graying out the button and changing your mouse cursor. This decreases the discoverability by providing little to no obvious feedback to the use; instead of graying out the button, it should not allow the user to perform the operation when clicked and let them know what still needs to be done by showing an error message. This constraint makes sense only in the context of what Git can and cannot do (it can't commit without a commit message or any staged changes), not in the sense of what the user wants to do.
 
-1.5 pushing changes to the remote branch is simple after writing a commit message and stageing all changes, however it does not afford using some of Git's more powerful pushing options. For example, if you wanted to forcibly change the HEAD (The commit that it points to) of the remote branch, there is no option to do so. When you try to push and the local repo is out of date, you must pull. Upon pulling an encountering a merge conflict, you are allowed to make line by line changes, which is not especially intuitive considering you were not able to do so at the staging level.
+1.5 pushing changes to the remote branch is simple after writing a commit message and staging all changes, however it does not afford using some of Git's more powerful pushing options. For example, if you wanted to forcibly change the HEAD (The commit that it points to) of the remote branch, there is no option to do so. When you try to push and the local repo is out of date, you must pull. Upon pulling an encountering a merge conflict, you are allowed to make line by line changes, which is not especially intuitive considering you were not able to do so at the staging level.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitKraken/ScreenshotHighlighted}
+  \caption{This image is a screen shot of the GitKraken window with some features highlighted}~\label{fig:GitKrakenFigure2}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitKraken/Screenshot2Highlighted}
+  \caption{This image is a screen shot of the GitKraken with some issues discussed that have been highlighted}~\label{fig:GitKrakenFigure3}
+\end{figure*}
 
 \subsection{Merge a Branch into Master}
 When you are working off of two different branches, you will eventually need to merge the two together.
 This is a core task in the Git development process. This section will briefly elaborate on the GitKrakenHTA2 steps and critique elements that could have been done better.
 
+2.1 The details of checking out a branch have already been covered.
+
+2.2 The details of selecting a branch to merge has also already been covered.
+
+2.3. The resolution of merge conflicts in GitKraken is somewhat streamlined. It allows you to line by line go through the changes and shows a preview of the result of the merge for each file in conflict. This also be quite tedious if you are working with large files. GitKraken does not allow you to specify the way it will attempt to automatically resolve conflicts (theirs, ours, etc...). In this sense, it is not quite as powerful as it first seems. This constraint on what it allows users to do is unnecessary, as they can explain different merge strategies to new users with little effort and have a default strategy set.
+
+2.4 Writing a commit message when resolving a merge is not different from writing a message when committing staged changes.
+
+2.5 You also have the option of aborting the merge which can be nice, but is also a bit dangerous as it allows the user to completely disregard all resolutions they may have already manually made.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitKraken/MergeDropdown}
+  \caption{This image is a screen shot of the GitKraken showing how to access a merge between two branches}~\label{fig:GitKrakenFigure4}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitKraken/MergeFailedNotification}
+  \caption{This image is a screen shot of the GitKraken showing what a failed merge looks like}~\label{fig:GitKrakenFigure5}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitKraken/MergeConflictResolution}
+  \caption{This image is a screen shot of the GitKraken showing how to resolve conflicts}~\label{fig:GitKrakenFigure6}
+\end{figure*}
+
+\section{SmartGit}
+SmartGit is another
 
 
 
@@ -329,6 +371,18 @@ submission, and how they will find your work useful. If you write with
 these questions in mind, your work is more likely to be successful,
 both in being accepted into the conference, and in influencing the
 work of our field.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitKraken/GitKrakenHTA1}
+  \caption{This image is a screen shot of the GitKraken happens on the first startup}~\label{fig:GitKrakenHTA1}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.75\columnwidth]{figures/GitKraken/GitKrakenHTA2}
+  \caption{This image is a screen shot of the GitKraken window with some features highlighted}~\label{fig:GitKrakenHTA2}
+\end{figure*}
 
 
 % BALANCE COLUMNS
