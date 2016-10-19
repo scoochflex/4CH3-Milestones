@@ -276,12 +276,11 @@ using signifiers (text boxes) to point to different buttons and explain what eac
 It also outlines some basic startup tasks including: how to link to your existing GitHub profile, how to change
 account preferences, and how to add an existing repository.
 
-GitKraken affords adding additional remote repositories for a local repository. The newly added remote repository
-can be hosted on GitHub, BitBucket, or just linked to using an URL. 
-
 Upon opening a repository to explore, you are shown a commit history graph. The graph affords the viewing of 
 the impact of each commit on the central code base. It shows when it was committed, who pushed it and
-the modifications made in that commit.
+the modifications made in that commit. The visual representation that it provides aids in showing the 
+conceptual model that Git gives to repositories; branches are shown as physical branches and visually indicate
+at what commit they branched off of the code.
 
 \begin{figure*}
   \centering
@@ -302,11 +301,18 @@ as you need to hover your mouse over it to see that you can click it. Without th
 and selecting checkout from the drop down.
 
 1.3 in the HTA is somewhat intuitive. To view the changes you have made locally, you can select the top item in
-the branch which is highlighted. GitKraken indicates that there are un-staged changes by having a dashed circle as apposed to a solid circle.
+the branch which is highlighted. GitKraken indicates that there are uncommitted changes by having a dashed circle as apposed to a solid circle.
 After you have done that, you can see all the files with changes made on the right side of the screen.
-GitKraken affords the viewing of changes by clicking on the files, the changes are shown in the middle of the screen and the additions and subtractions are signified by being highlighted green or red (this uses a cultural convention relating to traffic lights ~\cite{Norman:2013}).
+GitKraken affords the viewing of changes by clicking on the files, the changes are shown in the middle of the screen and the additions and subtractions are signified by being highlighted green or red (this uses a cultural convention relating to traffic lights ~\cite{Norman:2013}). 
 
+1.4 To stage all changes in a file you can click on the green plus next to the file name in the unstaged files preview window. When reviewing the changes in the file you have the option of staging or unstaging hunks. A hunk is a logical grouping of changes based on proximity within a file. GitKraken affords limited editing before staging a file by allowing you to add or remove hunks. It does not however allow you to edit the file otherwise, line by line changes cannot be discarded or added.
+The green button at the bottom right shows you what you need to do next to push. When you are reviewing changes, and staging files, it displays the text "Stage files/changes to commit". It does not afford clicking and signifies that you cannot click it by graying out the button and changing your mouse cursor. This decreases the discoverability by providing little to no obvious feedback to the use; instead of graying out the button, it should not allow the user to perform the operation when clicked and let them know what still needs to be done by showing an error message.
 
+1.5 pushing changes to the remote branch is simple after writing a commit message and stageing all changes, however it does not afford using some of Git's more powerful pushing options. For example, if you wanted to forcibly change the HEAD (The commit that it points to) of the remote branch, there is no option to do so. When you try to push and the local repo is out of date, you must pull. Upon pulling an encountering a merge conflict, you are allowed to make line by line changes, which is not especially intuitive considering you were not able to do so at the staging level.
+
+\subsection{Merge a Branch into Master}
+When you are working off of two different branches, you will eventually need to merge the two together.
+This is a core task in the Git development process. This section will briefly elaborate on the GitKrakenHTA2 steps and critique elements that could have been done better.
 
 
 

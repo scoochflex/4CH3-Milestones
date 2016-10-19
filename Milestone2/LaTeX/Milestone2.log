@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.3)  19 OCT 2016 03:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.3)  19 OCT 2016 13:44
 entering extended mode
 **"F:/School/Year 5/Term1/4HC3/4CH3-Milestones/Milestone2/LaTeX/Milestone2.tex"
 
@@ -1153,37 +1153,38 @@ File: figures/GitKraken/ScreenshotHighlighted.png Graphic file (type png)
 
 <use figures/GitKraken/ScreenshotHighlighted.png>
 Package pdftex.def Info: figures/GitKraken/ScreenshotHighlighted.png used on in
-put line 288.
+put line 287.
 (pdftex.def)             Requested size: 426.96915pt x 240.16653pt.
  [2] (Milestone2.bbl)
-Overfull \vbox (1.19244pt too high) has occurred while \output is active []
 
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
 
 [3 <./figures/GitKraken/ScreenshotHighlighted.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 336.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 336.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 338.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 338.
  (Milestone2.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 336.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 336.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 338.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 338.
 Package rerunfilecheck Info: File `Milestone2.out' has not changed.
 (rerunfilecheck)             Checksum: D4EBB4DFDF61AB3DA12E0E0322DE8433;582.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 336.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 338.
  ) 
 Here is how much of TeX's memory you used:
- 19487 strings out of 493634
- 359128 string characters out of 3143742
- 446040 words of memory out of 3000000
+ 19493 strings out of 493634
+ 359179 string characters out of 3143742
+ 446041 words of memory out of 3000000
  22295 multiletter control sequences out of 15000+200000
- 72825 words of font info for 193 fonts, out of 3000000 for 9000
+ 73085 words of font info for 197 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 62i,10n,56p,484b,573s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 62i,10n,56p,658b,573s stack positions out of 5000i,500n,10000p,200000b,50000s
 {F:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Users/Victor
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/txfonts/t1xbtt.pfb><F:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><F:/Program Files/Mi
 KTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><F:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/urw/times/utmr8a.pfb><F:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utm
 ri8a.pfb>
-Output written on Milestone2.pdf (3 pages, 306381 bytes).
+Output written on Milestone2.pdf (3 pages, 308016 bytes).
 PDF statistics:
  106 PDF objects out of 1000 (max. 8388607)
  27 named destinations out of 1000 (max. 500000)
