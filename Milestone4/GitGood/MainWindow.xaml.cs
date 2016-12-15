@@ -26,14 +26,14 @@ namespace GitGood
                 pathToGit = "\"" + System.IO.Path.GetFullPath(@"PortableGit\bin\git.exe") + "\"";
         }
 
-        public string command(string dir, string arguments,bool returnExitCode = false)
+        public string command(string dir, string arguments,bool returnExitCode = false, bool supressOutput = false)
         {
             Process process = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WorkingDirectory = dir;
             startInfo.UseShellExecute = false;
             startInfo.RedirectStandardOutput = true;
-            startInfo.WindowStyle = ProcessWindowStyle.Normal;
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
             startInfo.FileName = pathToGit;
             Console.WriteLine("Path to git: " + pathToGit);
             Console.WriteLine("Dir: " + dir);
@@ -44,7 +44,11 @@ namespace GitGood
             process.StartInfo = startInfo;
             process.Start();
             string output = process.StandardOutput.ReadToEnd();
-            Console.WriteLine("Output:\n\"" + output + "\"");
+            if (!supressOutput)
+            {                
+                Console.WriteLine("Output:\n\"" + output + "\"");
+            }
+            Console.WriteLine("Exit code: " + process.ExitCode.ToString());
             
             if (returnExitCode) {
                 output = process.ExitCode.ToString();
@@ -114,7 +118,7 @@ namespace GitGood
 
             if (string.IsNullOrEmpty(result))
             {
-                this.error = "Not a valid git repo... Please clone a valid repo and try again...s";
+                this.error = "Not a valid git repo... Please clone a valid repo and try again...";
             }
             else {
                 //origin https://github.com/scoochflex/HC3-Assignment2 (fetch)
@@ -229,7 +233,7 @@ namespace GitGood
             String result = this.git.command(this.path, " ls-files --modified");
             if (string.IsNullOrEmpty(result))
             {
-                this.error = "Could not populate branch list";
+                this.error = "Could not populate file list with changed files";
             }
             else
             {
@@ -246,7 +250,7 @@ namespace GitGood
                 result = this.git.command(this.path, " ls-files --others --exclude-standard");
                 if (string.IsNullOrEmpty(result))
                 {
-                    this.error = "Could not populate branch list";
+                    this.error = "Could not populate file list with untracked files";
                 }
                 else
                 {
@@ -289,7 +293,7 @@ namespace GitGood
 
         public String getHeadVersion(String fullPath) {
             String headVer = "";
-            headVer = git.command(this.path, " show HEAD:" + fullPath);
+            headVer = git.command(this.path, " show HEAD:" + fullPath, false, true);
             if (headVer=="") {
                 headVer = "No file found in HEAD";
             }
@@ -301,7 +305,11 @@ namespace GitGood
             String result = this.git.command(this.path, " add " + selectedFilePath);
             if (string.IsNullOrEmpty(result))
             {
-                this.error = "Could not populate branch list";
+                this.error = "Could not stage file: " + selectedFilePath;
+            }
+            else
+            {
+                this.error = "";
             }
         }
 
@@ -310,7 +318,7 @@ namespace GitGood
             String result = this.git.command(this.path, " reset HEAD " + selectedFilePath);
             if (string.IsNullOrEmpty(result))
             {
-                this.error = "Could not populate branch list";
+                this.error = "Could not unstage file: " + selectedFilePath;
             }
         }
 
@@ -329,6 +337,10 @@ namespace GitGood
             if (string.IsNullOrEmpty(result))
             {
                 this.error = "Could not commit!";
+            }
+            else
+            {
+                this.error = "";
             }
         }
 
@@ -358,6 +370,32 @@ namespace GitGood
                 this.error = "";
             }
         }
+
+        public void createBranch(string branchName)
+        {
+            String result = this.git.command(this.path, " checkout -b " + branchName);
+            if (string.IsNullOrEmpty(result))
+            {
+                this.error = "";
+            }
+            else
+            {
+                this.error = "Could not branch!" + result;
+            }
+        }
+
+        public void merge(int branchToMerge, String msg)
+        {
+            String result = this.git.command(this.path, " merge " + branches[branchToMerge].name+ " -m " + "\"" + msg + "\"");
+            if (string.IsNullOrEmpty(result))
+            {
+                this.error = "";
+            }
+            else
+            {
+                this.error = "Could not merge!" + result;
+            }
+        }
     }
 
     /// <summary>
@@ -372,7 +410,7 @@ namespace GitGood
         {
             InitializeComponent();
             RepoUrl.Text = "";//"git@github.com:scoochflex/HC3-Assignment2.git";
-            RepoPath.Text = @"C:\Users\Don\Pictures\test1\HC3-Assignment2";
+            RepoPath.Text = @"F:\School\Year 5\Term1\4HC3\TestRepo\TestRepo";
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -401,7 +439,7 @@ namespace GitGood
 
         private void TextBlock_Initialized(object sender, EventArgs e)
         {
-            ((TextBlock)sender).Text = "My Text \n Your Text";
+            //((TextBlock)sender).Text = "My Text \n Your Text";
         }
 
         private void repo_add_Click(object sender, RoutedEventArgs e)
@@ -554,30 +592,37 @@ namespace GitGood
             else if(string.IsNullOrEmpty(repoUrl))
             {
                 //Path is filled, if url is empty try to inti from given path..
-                Repo newRepo = new Repo(repoPath);
-                if (string.IsNullOrEmpty(newRepo.error))
-                {
-                    ComboBoxItem newMenuItem1 = new ComboBoxItem();
-                    repos.Add(newRepo);
+                if(Directory.Exists(repoPath)){
+                    Repo newRepo = new Repo(repoPath);
+                    if (string.IsNullOrEmpty(newRepo.error))
+                    {
+                        ComboBoxItem newMenuItem1 = new ComboBoxItem();
+                        repos.Add(newRepo);
 
-                    //Index of repo in repo list
-                    newMenuItem1.Name = "repo" + (repos.Count - 1).ToString();
-                    newMenuItem1.Content = newRepo.name;
+                        //Index of repo in repo list
+                        newMenuItem1.Name = "repo" + (repos.Count - 1).ToString();
+                        newMenuItem1.Content = newRepo.name;
 
-                    repo_list.Items.Add(newMenuItem1);
+                        repo_list.Items.Add(newMenuItem1);
 
-                    // Clear InputBox.
-                    RepoUrl.Text = String.Empty;
-                    RepoPath.Text = String.Empty;
-                    statusText.Text = "Successfully added repo: " + repoUrl;
-                    populateBranchList();
+                        // Clear InputBox.
+                        RepoUrl.Text = String.Empty;
+                        RepoPath.Text = String.Empty;
+                        statusText.Text = "Successfully added repo: " + repoUrl;
+                        populateBranchList();
+                    }
+                    else
+                    {
+                        RepoAddError.Content = newRepo.error;
+                        statusText.Text = "Could not add repo, error: " + newRepo.error;
+                    }
+                    Popup_RepoAdd.Visibility = System.Windows.Visibility.Collapsed;
                 }
                 else
                 {
-                    RepoAddError.Content = newRepo.error;
-                    statusText.Text = "Could not add repo, error: " + newRepo.error;
+                    //Path is invalid, get mad
+                    RepoAddError.Content = "Path does not exist!";
                 }
-                Popup_RepoAdd.Visibility = System.Windows.Visibility.Collapsed;
             }
             //Both feilds are filled out... Clone repo from url into path
             else {
@@ -630,21 +675,26 @@ namespace GitGood
         }
 
         public void populateBranchList() {
-            if (selectedRepo!=-1) { 
+            if (selectedRepo!=-1 && repos.Count>0) {
                 BranchList.Items.Clear();
                 ListBoxItem newItem = new ListBoxItem();
+                ComboBoxItem newMergeItem = new ComboBoxItem();
                 for (int i = 0; i < repos[selectedRepo].branches.Count; i++)
                 {
+                    newMergeItem = new ComboBoxItem();
+                    newMergeItem.Name = "MergeBranchItem" + i.ToString();
+                    newMergeItem.Content = repos[selectedRepo].branches[i].name;
+                    MergeBranchDropdown.Items.Add(newMergeItem);
                     newItem = new ListBoxItem();
                     newItem.Name = "BranchItem" + i.ToString();
                     newItem.Content = repos[selectedRepo].branches[i].name;
                     if (this.repos[selectedRepo].currentBranch == i)
                     {
-                        newItem.Background = new LinearGradientBrush(Colors.LightBlue, Colors.SlateBlue, 90);
-                        //newItem.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                        newItem.FontWeight = FontWeights.Bold;
                     }
                     BranchList.Items.Add(newItem);
                 }
+
             }
         }
 
@@ -660,14 +710,14 @@ namespace GitGood
 
         private void BranchSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (selectedRepo!=-1 && this.repos[selectedRepo].branches.Count>0) { 
+            if (selectedRepo!=-1 && this.repos[selectedRepo].branches.Count>0) {
                 ListBoxItem selected = (sender as ListBox).SelectedItem as ListBoxItem;
                 int num = 0;
                 bool res = int.TryParse(selected.Name.Remove(0,10), out num);
                 if (res)
                 {
                     int current = (repos[selectedRepo].currentBranch);
-                    ((ListBoxItem)BranchList.Items[current]).Background = new LinearGradientBrush();
+                    ((ListBoxItem)BranchList.Items[current]).FontWeight = FontWeights.Normal;
                     //Printing
                    /* foreach (ListBoxItem item in BranchList.Items) {
                         int tmp;
@@ -683,7 +733,7 @@ namespace GitGood
                     repos[selectedRepo].changeBranch(num);
                     Console.WriteLine("Current Branch hghlighted after: " + repos[selectedRepo].branches[num].name);
                     ListBoxItem after = (BranchList.Items[num]) as ListBoxItem;
-                    after.Background = Brushes.Red;
+                    after.FontWeight = FontWeights.Bold;
                     populateFileList();
                     populateChangedFileList();
                     populateStagedFileList();
@@ -697,8 +747,26 @@ namespace GitGood
 
         private void BranchYesButton_Click(object sender, RoutedEventArgs e)
         {
-            PopupBranch.Visibility = Visibility.Collapsed;
-            BranchError.Content = "";
+
+            if (this.selectedRepo < 0 || repos.Count == 0)
+            {
+                BranchError.Content = "You need to select a repo first!";
+            }else if(NewBranchName.Text!=""){
+                repos[selectedRepo].createBranch(NewBranchName.Text);
+                if(repos[selectedRepo].error==""){
+                    statusText.Text = "Successfully created branch: " + NewBranchName.Text;
+                    BranchError.Content = "";
+                    PopupBranch.Visibility = Visibility.Collapsed;
+                    repos[selectedRepo].determineBranches();
+                    populateBranchList();
+                }
+                else
+                {
+                    BranchError.Content = "Something went wrong when creating the branch: " + repos[selectedRepo].error;
+                }
+            }else{
+                BranchError.Content="Please enter a name for your branch";
+            }            
         }
 
         private void BranchNoButton_Click(object sender, RoutedEventArgs e)
@@ -724,11 +792,36 @@ namespace GitGood
 
         private void MergeYesButton_Click(object sender, RoutedEventArgs e)
         {
-            PopupMerge.Visibility = Visibility.Collapsed;
+            if (this.selectedRepo < 0 || repos.Count == 0)
+            {
+                MergeError.Content = "No repo selected, cannot merge!";
+            }
+            else if(MergeBranchDropdown.SelectedIndex==-1)
+            {
+                MergeError.Content = "You need to select a branch to merge into";
+            }
+            else if(MergeMessage.Text=="")
+            {
+                 MergeError.Content = "You need to enter a merge message";
+            }else
+            {
+                repos[selectedRepo].merge(MergeBranchDropdown.SelectedIndex, MergeMessage.Text);
+                if (repos[selectedRepo].error!="")
+                {
+                    MergeError.Content = "Something went wrong when mergeing!";
+                }
+                else
+                {
+                    statusText.Text = "Merge successful!";
+                    PopupMerge.Visibility = Visibility.Collapsed;
+                    MergeError.Content = "";
+                }
+            }
         }
 
         private void MergeNoButton_Click(object sender, RoutedEventArgs e)
         {
+            MergeError.Content = "";
             PopupMerge.Visibility = Visibility.Collapsed;
         }
 
@@ -736,19 +829,29 @@ namespace GitGood
         {
             if (CommitMessage.Text != "")
             {
-                if (selectedRepo != -1)
+                if (selectedRepo != -1 && repos.Count > 0)
                 {
                     List<String> changedFiles = repos[selectedRepo].getChangedFiles(false);
                     if (changedFiles.Count > 0)
                     {
                         CommitError.Content = "You still have unstaged changes!";
                     }
-                    else
+                    else if (repos[selectedRepo].getStagedFiles().Count() > 0)
                     {
                         repos[selectedRepo].commit(CommitMessage.Text);
                         PopupCommit.Visibility = Visibility.Collapsed;
                         statusText.Text = "Commit successful!";
+                        CommitError.Content = "";
+                        populateStagedFileList();
+                        populateChangedFileList();
                     }
+                    else
+                    {
+                        CommitError.Content = "You need to make and stage some changes before you commit! Nothing to commit!";
+                    }
+                }
+                else {
+                    CommitError.Content = "You need to add a repo before you try to commit anything!";
                 }
             }
             else {
@@ -758,6 +861,7 @@ namespace GitGood
 
         private void CommitNoButton_Click(object sender, RoutedEventArgs e)
         {
+            CommitError.Content = "";
             PopupCommit.Visibility = Visibility.Collapsed;
         }
         
@@ -783,27 +887,27 @@ namespace GitGood
 
         private void WorkflowBranch_Click(object sender, RoutedEventArgs e)
         {
-            if (this.selectedRepo < 0)
+            if (this.selectedRepo < 0 || repos.Count==0)
             {
                 BranchError.Content = "Warning: No repo selected";
             }
             else
             {
-                List<string> data = new List<string>();
-                foreach (Branch branch in this.repos[this.selectedRepo].branches)
-                {
-                    data.Add(branch.name);
-                    Console.WriteLine(branch.name);
-                }
-                BranchesDropdown.ItemsSource = data;
+               branchPopupBranchName.Content = repos[selectedRepo].branches[repos[selectedRepo].currentBranch].name;
             }
             PopupBranch.Visibility = Visibility.Visible;
         }
 
         private void WorkflowMerge_Click(object sender, RoutedEventArgs e)
         {
+            if (this.selectedRepo ==-1 || repos.Count == 0)
+            {
+                statusText.Text = "Cannot perform merge, you need to be on a branch to merge a branch!";
+                MergeError.Content = "Cannot perform merge, you need to be on a branch to merge a branch!";
+            }else{
+                mergePopupBranchName.Content = repos[selectedRepo].branches[repos[selectedRepo].currentBranch].name;                
+            }
             PopupMerge.Visibility = Visibility.Visible;
-            mergePopupBranchName.Content = repos[selectedRepo].branches[repos[selectedRepo].currentBranch].name;
         }
 
         private void PullNoButton_Click(object sender, RoutedEventArgs e)
@@ -819,11 +923,12 @@ namespace GitGood
         private void PushNoButton_Click(object sender, RoutedEventArgs e)
         {
             PopupPush.Visibility = Visibility.Collapsed;
+            PushError.Content = "";
         }
 
         private void PushYesButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.selectedRepo < 0)
+            if (this.selectedRepo < 0 || repos.Count == 0)
             {
                 PushError.Content = "No repo selected, cannot push!";
             }else
@@ -847,6 +952,7 @@ namespace GitGood
                         else
                         {
                             statusText.Text = repos[selectedRepo].error;
+                            PushError.Content = "There are no commits to push!";
                         }
                     }
                     else
@@ -854,8 +960,6 @@ namespace GitGood
                         statusText.Text = "Could not push! No unpushed commits detected";
                     }
                 }
-
-                PopupPush.Visibility = Visibility.Collapsed;
             }            
         }
     }

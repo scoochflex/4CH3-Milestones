@@ -8,7 +8,7 @@
         Title="MainWindow" Height="481.42" Width="903.65">
     <Grid HorizontalAlignment="Left" Margin="0,-1,-2,-8"  Width="904">
         <!-- Menu. -->
-        <Menu Background="#FFA9D1F4" Margin="0,0,0,438" HorizontalAlignment="Left" Width="904" Height="438">
+        <Menu Background="#FFA9D1F4" Margin="0,0,0,438" HorizontalAlignment="Left" Width="904" Height="438" Visibility="Collapsed">
             <MenuItem Header="_File">
                 <MenuItem Header="Load..." Click="MenuItem_Click" />
                 <MenuItem Header="Load again" Click="menuEmulLoadLast" />
@@ -27,10 +27,12 @@
 
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="157" VerticalAlignment="Top" Width="294" Margin="603,102,0,0">
             <Grid Margin="-1,0,1,-1" Height="152" VerticalAlignment="Bottom">
-                <TextBlock HorizontalAlignment="Left" Margin="68,0,0,0" TextWrapping="Wrap" Text="Selected Commits" VerticalAlignment="Top" Height="22" Width="158" TextAlignment="Center" FontSize="16"/>
+                <TextBlock HorizontalAlignment="Left" Margin="64,39,0,0" TextWrapping="Wrap" Text="Selected Commits TODO" VerticalAlignment="Top" Height="55" Width="158" TextAlignment="Center" FontSize="16"/>
             </Grid>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="73" Margin="133,21,0,0" VerticalAlignment="Top" Width="465"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="73" Margin="133,21,0,0" VerticalAlignment="Top" Width="465">
+            <TextBlock HorizontalAlignment="Left" Margin="163,18,0,0" TextWrapping="Wrap" Text="All Commits TODO" VerticalAlignment="Top" Height="44" Width="111" TextAlignment="Center" FontSize="16"/>
+        </Border>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="314" Margin="133,102,0,0" VerticalAlignment="Top" Width="465">
             <TabControl x:Name="tabControl" HorizontalAlignment="Left" Width="123" Margin="9,25,0,9">
                 <TabItem Header="Changes" Height="22" VerticalAlignment="Top">
@@ -55,14 +57,13 @@
         <Grid>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="394" Margin="0,22,0,0" VerticalAlignment="Top" Width="130">
             </Border>
-            <ComboBox x:Name="repo_list"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Margin="5,67,0,359" Height="33" SelectionChanged="repo_select">
+            <ComboBox x:Name="repo_list"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Margin="5,74,0,359" Height="26" IsEditable="True" IsReadOnly="True" Text="Select Branch" SelectionChanged="repo_select">
                 <!--Populate like this: List<string> data = new List<string>(); comboBox.ItemsSource = data; -->
                 <ComboBoxItem x:Name="repo_none">None</ComboBoxItem>
             </ComboBox>
             <Label x:Name="label" Content="Repos" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,28,0,0" Width="114" Height="26"/>
             <Label x:Name="branches_label" Content="Branches" VerticalAlignment="Top" Width="75" HorizontalAlignment="Left" Height="27" Margin="5,100,0,0"></Label>
             <ListBox x:Name="BranchList" HorizontalAlignment="Left" Height="288" Margin="5,127,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="BranchSelectionChanged">
-                <ListBoxItem>No Branches</ListBoxItem>
             </ListBox>
         </Grid>
         <Border BorderBrush="Black" BorderThickness="1" Height="255" Margin="272,145,318,0" VerticalAlignment="Top">
@@ -72,16 +73,16 @@
                     <ColumnDefinition Width="183*"/>
                 </Grid.ColumnDefinitions>
 
-                <ScrollViewer x:Name="HeadFileView" HorizontalAlignment="Left" Height="209" VerticalAlignment="Top" Width="130" BorderBrush="Black" BorderThickness="5" Margin="36,29,0,0" Grid.Column="1" HorizontalScrollBarVisibility="Auto">
+                <ScrollViewer x:Name="HeadFileView" HorizontalAlignment="Left" Height="209" VerticalAlignment="Top" Width="151" BorderBrush="Black" BorderThickness="5" Margin="18,29,0,0" Grid.Column="1" HorizontalScrollBarVisibility="Auto">
                     <TextBlock TextWrapping="Wrap" Initialized="TextBlock_Initialized" Height="199"/>
                 </ScrollViewer>
 
-                <TextBlock x:Name="FilesTitle" HorizontalAlignment="Left" Margin="-130,-45,0,0" TextWrapping="Wrap" Text="Files" VerticalAlignment="Top" Height="22" Width="112" TextAlignment="Center" FontSize="16"/>
-                <TextBlock x:Name="FilesTitle_Copy" HorizontalAlignment="Left" Margin="100,-45,0,0" TextWrapping="Wrap" Text="Differences" VerticalAlignment="Top" Height="22" Width="112" TextAlignment="Center" FontSize="16" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="FilesTitle" HorizontalAlignment="Left" Margin="-130,-42,0,0" TextWrapping="Wrap" Text="Files" VerticalAlignment="Top" Height="22" Width="112" TextAlignment="Center" FontSize="16"/>
+                <TextBlock x:Name="FilesTitle_Copy" HorizontalAlignment="Left" Margin="100,-42,0,0" TextWrapping="Wrap" Text="Differences" VerticalAlignment="Top" Height="22" Width="112" TextAlignment="Center" FontSize="16" Grid.ColumnSpan="2"/>
 
                 <Label x:Name="label1" Content="Local" HorizontalAlignment="Left" Height="25" Margin="50,1,0,0" VerticalAlignment="Top" Width="48"/>
                 <Label x:Name="label1_Copy" Content="Head" HorizontalAlignment="Left" Height="26" Margin="74,0,0,0" VerticalAlignment="Top" Width="106" Grid.Column="1"/>
-                <ScrollViewer x:Name="LocalFileView" HorizontalAlignment="Left" Height="208" Margin="20,31,0,0" VerticalAlignment="Top" Width="130" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto">
+                <ScrollViewer x:Name="LocalFileView" HorizontalAlignment="Left" Height="208" Margin="3,31,0,0" VerticalAlignment="Top" Width="150" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto">
                     <TextBlock x:Name="LocalFile" TextWrapping="Wrap" Initialized="TextBlock_Initialized" Height="199"/>
                 </ScrollViewer>
                 <Label x:Name="current_file_label" Content="Filename" HorizontalAlignment="Left" Height="25" Margin="146,1,0,0" VerticalAlignment="Top" Width="66" Grid.ColumnSpan="2"/>
@@ -92,20 +93,23 @@
                 <TextBlock HorizontalAlignment="Left" Margin="70,0,0,0" TextWrapping="Wrap" Text="Workflow Actions" VerticalAlignment="Top" Height="22" Width="158" TextAlignment="Center" FontSize="16"/>
                 <Button x:Name="WorkflowCommit" Content="Commit" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowCommit_Click"/>
                 <Button x:Name="WorkflowPush" Content="Push" HorizontalAlignment="Left" Margin="101,32,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowPush_Click"/>
-                <Button x:Name="WorkflowCompare" Content="Compare" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowCompare_Click"/>
+                <Button x:Name="WorkflowCompare" Content="Compare" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="75" />
+                <!--Click="WorkflowCompare_Click" -->
                 <Button x:Name="WorkflowPull" Content="Pull" HorizontalAlignment="Left" Margin="101,83,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowPull_Click"/>
                 <Button x:Name="WorkflowBranch" Content="Branch" HorizontalAlignment="Left" Margin="196,32,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowBranch_Click"/>
                 <Button x:Name="WorkflowMerge" Content="Merge" HorizontalAlignment="Left" Margin="196,83,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowMerge_Click"/>
                 <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="There are no staged changes." VerticalAlignment="Top" Height="34" Width="75" FontSize="10"/>
                 <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="101,52,0,0" TextWrapping="Wrap" Text="There are no staged changes." VerticalAlignment="Top" Height="34" Width="75" FontSize="10"/>
                 <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="196,52,0,0" TextWrapping="Wrap" Text="From currently selected commit." VerticalAlignment="Top" Height="34" Width="75" FontSize="10"/>
-                <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="10,103,0,10" TextWrapping="Wrap" Text="Compare files between two commits." Width="75" FontSize="10"/>
-                <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="101,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="75" FontSize="10" Text="todo"/>
+                <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="10,103,0,10" TextWrapping="Wrap" Text="TODO" Width="75" FontSize="10"/>
+                <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="101,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="75" FontSize="10" Text="TODO"/>
                 <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="196,103,0,0" TextWrapping="Wrap" Text="Merge current into different branch." VerticalAlignment="Top" Height="39" Width="75" FontSize="10"/>
             </Grid>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="73" Margin="604,22,0,0" VerticalAlignment="Top" Width="293"/>
-        <Button x:Name="repo_add" Content="Add" HorizontalAlignment="Left" Margin="78,34,0,0" VerticalAlignment="Top" Width="36" Click="repo_add_Click"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="73" Margin="604,22,0,0" VerticalAlignment="Top" Width="293">
+            <TextBlock HorizontalAlignment="Left" Margin="81,11,0,0" TextWrapping="Wrap" Text="Current User TODO" VerticalAlignment="Top" Height="51" Width="125" TextAlignment="Center" FontSize="16"/>
+        </Border>
+        <Button x:Name="repo_add" Content="Add" HorizontalAlignment="Left" Margin="77,31,0,0" VerticalAlignment="Top" Width="36" Click="repo_add_Click"/>
 
         <StatusBar Name="statusBar" Height="33" VerticalAlignment="Bottom">
             <TextBlock Name="statusText">Ready.</TextBlock>
@@ -132,12 +136,16 @@
                         <Label>Dest Path:</Label>
                         <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="RepoPath"/>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="You may add an exisitng repo by filling out just the path!"/>
+                    </StackPanel>
                     <Label Name="RepoAddError"></Label>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button x:Name="NoButton" Width="80" Margin="20,5,20,5" Content="Cancel" Click="NoButton_Click" />
                         <Button x:Name="YesButton" Width="80" Margin="20,5,20,5" Content="Add" Click="YesButton_Click"/>
                     </StackPanel>
                 </StackPanel>
+
             </Border>
         </Grid>
 
@@ -212,14 +220,17 @@
         </Grid>
         <Grid x:Name="PopupBranch" Visibility="Collapsed">
             <Grid Background="Black" Opacity="0.5"/>
-            <Border MinWidth="250" Background="#FFA9D1F4" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border MinWidth="250" Background="#FFA9D1F4" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="247" Margin="311,151,311,61">
                 <StackPanel Margin="20,5,20,5">
                     <TextBlock HorizontalAlignment="Center" Margin="5" Text="Branch" FontWeight="Bold" FontSize="16" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Label Width="100">Current Branch:</Label>
+                        <Label x:Name="branchPopupBranchName" Content="" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <Label Width="100">Branch Name:</Label>
-                        <ComboBox x:Name="BranchesDropdown" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120">
-                            <!--Populate like this: List<string> data = new List<string>(); comboBox.ItemsSource = data; -->
-                        </ComboBox>
+                        <TextBox x:Name="NewBranchName" MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" Width="138" Height="30"/>
+                        <!--Populate like this: List<string> data = new List<string>(); comboBox.ItemsSource = data; -->
                     </StackPanel>
                     <TextBlock Width="222" TextWrapping="Wrap">When you click branch it will  automatically checkout the created branch and stash old changes.</TextBlock>
                     <Label Name="BranchError"></Label>
@@ -244,7 +255,7 @@
         </Grid>
 
 
-        <Grid x:Name="PopupPush" Visibility="Visible">
+        <Grid x:Name="PopupPush" Visibility="Collapsed">
             <Grid Background="Black" Opacity="0.5"/>
             <Border MinWidth="250" Background="#FFA9D1F4" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Margin="20,5,20,5">
