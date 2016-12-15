@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GitGood"
         mc:Ignorable="d"
-        Title="MainWindow" Height="481.42" Width="910">
+        Title="MainWindow" Height="481.42" Width="903.65">
     <Grid HorizontalAlignment="Left" Margin="0,-1,-2,-8"  Width="904">
         <!-- Menu. -->
         <Menu Background="#FFA9D1F4" Margin="0,0,0,438" HorizontalAlignment="Left" Width="904" Height="438">
@@ -34,36 +34,37 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="314" Margin="133,102,0,0" VerticalAlignment="Top" Width="465">
             <TabControl x:Name="tabControl" HorizontalAlignment="Left" Width="123" Margin="9,25,0,9">
                 <TabItem Header="Changes" Height="22" VerticalAlignment="Top">
-                    <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" Width="126">
-                        <Button x:Name="StageAllChanges" Content="Stage All" HorizontalAlignment="Left" Height="30" Margin="33,191,0,0" VerticalAlignment="Top" Width="76"/>
+                    <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" Width="126" Margin="0,0,-9,0">
+                        <Button x:Name="Discard" Content="Discard" HorizontalAlignment="Left" Height="20" Margin="10,159,0,0" VerticalAlignment="Top" Width="100" Click="Discard_Click"/>
+                        <Button x:Name="StageSelected" Content="Stage Selected" HorizontalAlignment="Left" Height="20" Margin="10,203,0,0" VerticalAlignment="Top" Width="100" Click="StageSelected_Click"/>
+                        <Button x:Name="StageAllChanges" Content="Stage All" HorizontalAlignment="Left" Height="20" Margin="10,181,0,0" VerticalAlignment="Top" Width="100" Click="StageAllChanges_Click"/>
+                        <ListBox x:Name="ChangedFiles" HorizontalAlignment="Left" Width="100" SelectionChanged="fileSelectionChanged" Margin="10,4,0,0" Height="150" VerticalAlignment="Top"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="All Files">
-                    <ListBox x:Name="AllFiles" HorizontalAlignment="Left" Width="100" SelectionChanged="listBox_SelectionChanged" Margin="10,4,0,0" Height="236" VerticalAlignment="Top">
-                        <ListBoxItem>ListBox Item #1</ListBoxItem>
-                        <ListBoxItem>ListBox Item #2</ListBoxItem>
-                        <ListBoxItem>ListBox Item #3</ListBoxItem>
-                    </ListBox>
+                    <ListBox x:Name="AllFiles" HorizontalAlignment="Left" Width="100" SelectionChanged="fileSelectionChanged" Margin="10,4,0,0" Height="236" VerticalAlignment="Top"/>
+                </TabItem>
+                <TabItem Header="Staged">
+                    <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" Width="126" Margin="0,0,-9,0">
+                        <Button x:Name="Unstage" Content="Unstage File" HorizontalAlignment="Left" Height="20" Margin="10,203,0,0" VerticalAlignment="Top" Width="100" Click="Unstage_Click"/>
+                        <ListBox x:Name="StagedFiles" HorizontalAlignment="Left" Width="100" SelectionChanged="fileSelectionChanged" Margin="10,4,0,0" Height="196" VerticalAlignment="Top"/>
+                    </Grid>
                 </TabItem>
             </TabControl>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="394" Margin="0,22,0,0" VerticalAlignment="Top" Width="130">
-
-            <Button x:Name="CurrentRepoName" Content="Click Me"
-                Click="Button_Click"
-                ContextMenuService.IsEnabled="False" Margin="9,45,9,323">
-                <Button.ContextMenu>
-                    <ContextMenu x:Name="repo_list" >
-                        <MenuItem x:Name="repo_none" Header="None"/>
-                    </ContextMenu>
-                </Button.ContextMenu>
-            </Button>
-        </Border>
-        <Label x:Name="label" Content="Repos" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,28,0,0" Width="114" Height="26"/>
-        <ListBox x:Name="BranchList" HorizontalAlignment="Left" Height="309" Margin="5,106,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="BranchSelectionChanged">
-            <Label x:Name="branches_label" Content="Branches" VerticalAlignment="Top" Width="75" HorizontalAlignment="Left" Height="27"/>
-            <ListBoxItem>No Branches</ListBoxItem>
-        </ListBox>
+        <Grid>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="394" Margin="0,22,0,0" VerticalAlignment="Top" Width="130">
+            </Border>
+            <ComboBox x:Name="repo_list"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Margin="5,67,0,359" Height="33" SelectionChanged="repo_select">
+                <!--Populate like this: List<string> data = new List<string>(); comboBox.ItemsSource = data; -->
+                <ComboBoxItem x:Name="repo_none">None</ComboBoxItem>
+            </ComboBox>
+            <Label x:Name="label" Content="Repos" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,28,0,0" Width="114" Height="26"/>
+            <Label x:Name="branches_label" Content="Branches" VerticalAlignment="Top" Width="75" HorizontalAlignment="Left" Height="27" Margin="5,100,0,0"></Label>
+            <ListBox x:Name="BranchList" HorizontalAlignment="Left" Height="288" Margin="5,127,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="BranchSelectionChanged">
+                <ListBoxItem>No Branches</ListBoxItem>
+            </ListBox>
+        </Grid>
         <Border BorderBrush="Black" BorderThickness="1" Height="255" Margin="272,145,318,0" VerticalAlignment="Top">
             <Grid Background="#FFE5E5E5" Margin="0,0,0,0" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
@@ -71,7 +72,7 @@
                     <ColumnDefinition Width="183*"/>
                 </Grid.ColumnDefinitions>
 
-                <ScrollViewer x:Name="HeadFileView" HorizontalAlignment="Left" Height="209" VerticalAlignment="Top" Width="130" BorderBrush="Black" BorderThickness="5" Margin="36,29,0,0" Grid.Column="1">
+                <ScrollViewer x:Name="HeadFileView" HorizontalAlignment="Left" Height="209" VerticalAlignment="Top" Width="130" BorderBrush="Black" BorderThickness="5" Margin="36,29,0,0" Grid.Column="1" HorizontalScrollBarVisibility="Auto">
                     <TextBlock TextWrapping="Wrap" Initialized="TextBlock_Initialized" Height="199"/>
                 </ScrollViewer>
 
@@ -80,8 +81,8 @@
 
                 <Label x:Name="label1" Content="Local" HorizontalAlignment="Left" Height="25" Margin="50,1,0,0" VerticalAlignment="Top" Width="48"/>
                 <Label x:Name="label1_Copy" Content="Head" HorizontalAlignment="Left" Height="26" Margin="74,0,0,0" VerticalAlignment="Top" Width="106" Grid.Column="1"/>
-                <ScrollViewer x:Name="LocalFileView" HorizontalAlignment="Left" Height="208" Margin="20,31,0,0" VerticalAlignment="Top" Width="130" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2">
-                    <TextBlock TextWrapping="Wrap" Initialized="TextBlock_Initialized" Height="199"/>
+                <ScrollViewer x:Name="LocalFileView" HorizontalAlignment="Left" Height="208" Margin="20,31,0,0" VerticalAlignment="Top" Width="130" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" HorizontalScrollBarVisibility="Auto">
+                    <TextBlock x:Name="LocalFile" TextWrapping="Wrap" Initialized="TextBlock_Initialized" Height="199"/>
                 </ScrollViewer>
                 <Label x:Name="current_file_label" Content="Filename" HorizontalAlignment="Left" Height="25" Margin="146,1,0,0" VerticalAlignment="Top" Width="66" Grid.ColumnSpan="2"/>
             </Grid>
@@ -89,12 +90,12 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="154" VerticalAlignment="Top" Width="294" Margin="603,262,0,0">
             <Grid>
                 <TextBlock HorizontalAlignment="Left" Margin="70,0,0,0" TextWrapping="Wrap" Text="Workflow Actions" VerticalAlignment="Top" Height="22" Width="158" TextAlignment="Center" FontSize="16"/>
-                <Button x:Name="button" Content="Commit" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="button_Copy" Content="Push" HorizontalAlignment="Left" Margin="101,32,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="button_Copy1" Content="Compare" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="button_Copy2" Content="Cherry-pick" HorizontalAlignment="Left" Margin="101,83,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="button_Copy3" Content="Branch" HorizontalAlignment="Left" Margin="196,32,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="button_Copy4" Content="Merge" HorizontalAlignment="Left" Margin="196,83,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="WorkflowCommit" Content="Commit" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowCommit_Click"/>
+                <Button x:Name="WorkflowPush" Content="Push" HorizontalAlignment="Left" Margin="101,32,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowPush_Click"/>
+                <Button x:Name="WorkflowCompare" Content="Compare" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowCompare_Click"/>
+                <Button x:Name="WorkflowPull" Content="Pull" HorizontalAlignment="Left" Margin="101,83,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowPull_Click"/>
+                <Button x:Name="WorkflowBranch" Content="Branch" HorizontalAlignment="Left" Margin="196,32,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowBranch_Click"/>
+                <Button x:Name="WorkflowMerge" Content="Merge" HorizontalAlignment="Left" Margin="196,83,0,0" VerticalAlignment="Top" Width="75" Click="WorkflowMerge_Click"/>
                 <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="There are no staged changes." VerticalAlignment="Top" Height="34" Width="75" FontSize="10"/>
                 <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="101,52,0,0" TextWrapping="Wrap" Text="There are no staged changes." VerticalAlignment="Top" Height="34" Width="75" FontSize="10"/>
                 <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="196,52,0,0" TextWrapping="Wrap" Text="From currently selected commit." VerticalAlignment="Top" Height="34" Width="75" FontSize="10"/>
@@ -124,20 +125,155 @@
                 <StackPanel>
                     <TextBlock Margin="5" Text="Add repo:" FontWeight="Bold" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label>Repo Url : </Label>
+                        <Label>Repo Url :</Label>
                         <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="RepoUrl"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label>Dest Path: </Label>
+                        <Label>Dest Path:</Label>
                         <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="RepoPath"/>
                     </StackPanel>
                     <Label Name="RepoAddError"></Label>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button x:Name="YesButton" Margin="5" Content="Yes" Background="{x:Null}" Click="YesButton_Click"/>
-                        <Button x:Name="NoButton" Margin="5" Content="No" Background="{x:Null}" Click="NoButton_Click" />
+                        <Button x:Name="NoButton" Width="80" Margin="20,5,20,5" Content="Cancel" Click="NoButton_Click" />
+                        <Button x:Name="YesButton" Width="80" Margin="20,5,20,5" Content="Add" Click="YesButton_Click"/>
                     </StackPanel>
                 </StackPanel>
             </Border>
         </Grid>
+
+        <Grid x:Name="PopupCommit" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.5"/>
+            <Border MinWidth="250" Background="#FFA9D1F4" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Margin="5" Text="Commit" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" />
+                    <Label>Type a commit message:</Label>
+                    <TextBox x:Name="CommitMessage" MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" Width="222" Height="54"/>
+                    <TextBlock Width="222" TextWrapping="Wrap">When you click commit, it will take all staged changes and commit them</TextBlock>
+                    <Label Name="CommitError"></Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Width="80" Margin="20,5,20,5" Content="Cancel" Click="CommitNoButton_Click" />
+                        <Button Width="80" Margin="20,5,20,5" Content="Commit" Click="CommitYesButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid x:Name="PopupMerge" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.5"/>
+            <Border MinWidth="250" Background="#FFA9D1F4" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Margin="20,5,20,5">
+                    <TextBlock HorizontalAlignment="Center" Margin="5" Text="Merge" FontWeight="Bold" FontSize="16" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Label Width="100">Current Branch:</Label>
+                        <Label x:Name="mergePopupBranchName" Content="" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Label Width="100">Branch to merge:</Label>
+                        <ComboBox x:Name="MergeBranchDropdown" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120">
+                            <!--Populate like this: List<string> data = new List<string>(); comboBox.ItemsSource = data; -->
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Label Width="100">Merge strategy:</Label>
+                        <ComboBox x:Name="MergeStategyDropdown" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120">
+                            <ComboBoxItem IsSelected="True" Content="Ours"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <TextBlock Width="222" TextWrapping="Wrap">This merge strategy prefers the changes made on the current branch.</TextBlock>
+                    <Label>Merge message:</Label>
+                    <TextBox x:Name="MergeMessage" MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" Width="222" Height="54"/>
+                    <TextBlock Width="222" TextWrapping="Wrap">When you click merge, it will merge the selected branch into the current branch.</TextBlock>
+                    <Label Name="MergeError"></Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Width="80" Margin="20,5,20,5" Content="Cancel" Click="MergeNoButton_Click" />
+                        <Button Width="80" Margin="20,5,20,5" Content="Merge" Click="MergeYesButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid x:Name="PopupCommitView" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.5"/>
+            <Border MinWidth="250" Background="#FFA9D1F4" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Margin="20,5,20,5">
+                    <TextBlock HorizontalAlignment="Center" Margin="5" Text="Commit View" FontWeight="Bold" FontSize="16" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Label Width="100">User:</Label>
+                        <Label>John Doe</Label>
+                    </StackPanel>
+                    <Label>Commit message:</Label>
+                    <TextBox x:Name="Something1" Text="Not implemented." MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" Width="222" Height="54"/>
+                    <TextBlock Width="222" TextWrapping="Wrap">When you click view changes you will be able to view the differences between this commit and the one preceeding it.</TextBlock>
+                    <Label Name="CommitViewError"></Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Width="80" Margin="20,5,20,5" Content="Cancel" Click="CommitViewNoButton_Click" />
+                        <Button Width="80" Margin="20,5,20,5" Content="View Changes" Click="CommitViewYesButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid x:Name="PopupBranch" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.5"/>
+            <Border MinWidth="250" Background="#FFA9D1F4" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Margin="20,5,20,5">
+                    <TextBlock HorizontalAlignment="Center" Margin="5" Text="Branch" FontWeight="Bold" FontSize="16" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Label Width="100">Branch Name:</Label>
+                        <ComboBox x:Name="BranchesDropdown" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120">
+                            <!--Populate like this: List<string> data = new List<string>(); comboBox.ItemsSource = data; -->
+                        </ComboBox>
+                    </StackPanel>
+                    <TextBlock Width="222" TextWrapping="Wrap">When you click branch it will  automatically checkout the created branch and stash old changes.</TextBlock>
+                    <Label Name="BranchError"></Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Width="80" Margin="20,5,20,5" Content="Cancel" Click="BranchNoButton_Click" />
+                        <Button Width="80" Margin="20,5,20,5" Content="Branch" Click="BranchYesButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid x:Name="PopupGeneric" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.5"/>
+            <Border MinWidth="250" Background="#FFA9D1F4" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Margin="20,5,20,5">
+                    <TextBlock x:Name="PopupGenericTitle" HorizontalAlignment="Center" Margin="5" Text="Success" FontWeight="Bold" FontSize="16" />
+                    <TextBlock x:Name="PopupGenericContent" Width="222" TextWrapping="Wrap"><Run Text="Success."/></TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="PopupGenericYes" Width="80" Margin="20,5,20,5" Content="OK" Click="GenericYesButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+
+        <Grid x:Name="PopupPush" Visibility="Visible">
+            <Grid Background="Black" Opacity="0.5"/>
+            <Border MinWidth="250" Background="#FFA9D1F4" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Margin="20,5,20,5">
+                    <TextBlock HorizontalAlignment="Center" Margin="5" Text="Push" FontWeight="Bold" FontSize="16" />
+                    <TextBlock Width="222" TextWrapping="Wrap">When you click push, it will upload your local changes to the remote repo.</TextBlock>
+                    <Label Name="PushError"></Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Width="80" Margin="20,5,20,5" Content="Cancel" Click="PushNoButton_Click" />
+                        <Button Width="80" Margin="20,5,20,5" Content="Push" Click="PushYesButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="PopupPull" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.5"/>
+            <Border MinWidth="250" Background="#FFA9D1F4" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Margin="20,5,20,5">
+                    <TextBlock HorizontalAlignment="Center" Margin="5" Text="Pull" FontWeight="Bold" FontSize="16" />
+                    <TextBlock Width="222" TextWrapping="Wrap">When you click push, it will download the remote changes into your local repo.</TextBlock>
+                    <Label Name="PullError"></Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Width="80" Margin="20,5,20,5" Content="Cancel" Click="PullNoButton_Click" />
+                        <Button Width="80" Margin="20,5,20,5" Content="Pull" Click="PullYesButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+
     </Grid>
 </Window>
