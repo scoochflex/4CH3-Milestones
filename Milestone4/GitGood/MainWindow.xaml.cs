@@ -410,7 +410,7 @@ namespace GitGood
         {
             InitializeComponent();
             RepoUrl.Text = "";//"git@github.com:scoochflex/HC3-Assignment2.git";
-            RepoPath.Text = @"F:\School\Year 5\Term1\4HC3\TestRepo\TestRepo";
+            RepoPath.Text = @"";
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -583,11 +583,11 @@ namespace GitGood
 
             if (string.IsNullOrEmpty(repoUrl) && string.IsNullOrEmpty(repoPath))
             {
-                RepoAddError.Content = "Please fill out the path to add an already instantiated repo,\n or fill out both feilds to clone the repo in the given path!";
+                RepoAddError.Content = "Please fill out the path to add a pre-existing repo,\n or fill out both fields to clone the repo in the given path.";
             } else if(string.IsNullOrEmpty(repoPath))
             {
                 //Path is empty, get mad
-                RepoAddError.Content = "Please fill out the path!";
+                RepoAddError.Content = "Please fill out the path.";
             }
             else if(string.IsNullOrEmpty(repoUrl))
             {
@@ -621,7 +621,7 @@ namespace GitGood
                 else
                 {
                     //Path is invalid, get mad
-                    RepoAddError.Content = "Path does not exist!";
+                    RepoAddError.Content = "Path does not exist.";
                 }
             }
             //Both feilds are filled out... Clone repo from url into path
@@ -750,7 +750,7 @@ namespace GitGood
 
             if (this.selectedRepo < 0 || repos.Count == 0)
             {
-                BranchError.Content = "You need to select a repo first!";
+                BranchError.Content = "You need to select a repo first.";
             }else if(NewBranchName.Text!=""){
                 repos[selectedRepo].createBranch(NewBranchName.Text);
                 if(repos[selectedRepo].error==""){
@@ -794,21 +794,21 @@ namespace GitGood
         {
             if (this.selectedRepo < 0 || repos.Count == 0)
             {
-                MergeError.Content = "No repo selected, cannot merge!";
+                MergeError.Content = "No repo selected, cannot merge.";
             }
             else if(MergeBranchDropdown.SelectedIndex==-1)
             {
-                MergeError.Content = "You need to select a branch to merge into";
+                MergeError.Content = "You need to select a branch to merge into.";
             }
             else if(MergeMessage.Text=="")
             {
-                 MergeError.Content = "You need to enter a merge message";
+                 MergeError.Content = "You need to enter a merge message.";
             }else
             {
                 repos[selectedRepo].merge(MergeBranchDropdown.SelectedIndex, MergeMessage.Text);
                 if (repos[selectedRepo].error!="")
                 {
-                    MergeError.Content = "Something went wrong when mergeing!";
+                    MergeError.Content = "Something went wrong when merging.";
                 }
                 else
                 {
@@ -834,7 +834,7 @@ namespace GitGood
                     List<String> changedFiles = repos[selectedRepo].getChangedFiles(false);
                     if (changedFiles.Count > 0)
                     {
-                        CommitError.Content = "You still have unstaged changes!";
+                        CommitError.Content = "You still have unstaged changes.";
                     }
                     else if (repos[selectedRepo].getStagedFiles().Count() > 0)
                     {
@@ -847,15 +847,15 @@ namespace GitGood
                     }
                     else
                     {
-                        CommitError.Content = "You need to make and stage some changes before you commit! Nothing to commit!";
+                        CommitError.Content = "You need to make and stage some changes before you commit. Nothing to commit.";
                     }
                 }
                 else {
-                    CommitError.Content = "You need to add a repo before you try to commit anything!";
+                    CommitError.Content = "You need to add a repo before you try to commit anything.";
                 }
             }
             else {
-                CommitError.Content ="You need to enter a commit message before you can commit";
+                CommitError.Content ="You need to enter a commit message before you can commit.";
             }
         }
 
@@ -889,7 +889,7 @@ namespace GitGood
         {
             if (this.selectedRepo < 0 || repos.Count==0)
             {
-                BranchError.Content = "Warning: No repo selected";
+                BranchError.Content = "Warning: No repo selected.";
             }
             else
             {
@@ -902,8 +902,8 @@ namespace GitGood
         {
             if (this.selectedRepo ==-1 || repos.Count == 0)
             {
-                statusText.Text = "Cannot perform merge, you need to be on a branch to merge a branch!";
-                MergeError.Content = "Cannot perform merge, you need to be on a branch to merge a branch!";
+                statusText.Text = "Cannot perform merge, you need to be on a branch to merge a branch.";
+                MergeError.Content = "Cannot perform merge, you need to be on a branch to merge a branch.";
             }else{
                 mergePopupBranchName.Content = repos[selectedRepo].branches[repos[selectedRepo].currentBranch].name;                
             }
@@ -930,13 +930,13 @@ namespace GitGood
         {
             if (this.selectedRepo < 0 || repos.Count == 0)
             {
-                PushError.Content = "No repo selected, cannot push!";
+                PushError.Content = "No repo selected, cannot push.";
             }else
             {
                 List<String> changedFiles = repos[selectedRepo].getChangedFiles(false);
                 if (changedFiles.Count > 0)
                 {
-                    PushError.Content = "You still have unstaged changes!";
+                    PushError.Content = "You still have unstaged changes.";
                 }
                 else
                 {
@@ -952,12 +952,12 @@ namespace GitGood
                         else
                         {
                             statusText.Text = repos[selectedRepo].error;
-                            PushError.Content = "There are no commits to push!";
+                            PushError.Content = "There are no commits to push.";
                         }
                     }
                     else
                     {
-                        statusText.Text = "Could not push! No unpushed commits detected";
+                        statusText.Text = "Could not push. No unpushed commits detected.";
                     }
                 }
             }            
